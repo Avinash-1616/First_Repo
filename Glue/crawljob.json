@@ -1,0 +1,37 @@
+{
+  "name" : "crawljob",
+  "jobMode" : "SCRIPT",
+  "description" : "",
+  "role" : "arn:aws:iam::109286116364:role/crawlrole",
+  "executionProperty" : {
+    "maxConcurrentRuns" : 1
+  },
+  "command" : {
+    "name" : "glueetl",
+    "scriptLocation" : "s3://aws-glue-assets-109286116364-eu-north-1/scripts/crawljob.py",
+    "pythonVersion" : "3"
+  },
+  "defaultArguments" : {
+    "--enable-metrics" : "true",
+    "--spark-event-logs-path" : "s3://aws-glue-assets-109286116364-eu-north-1/sparkHistoryLogs/",
+    "--enable-job-insights" : "true",
+    "--enable-observability-metrics" : "true",
+    "--enable-glue-datacatalog" : "true",
+    "--job-bookmark-option" : "job-bookmark-disable",
+    "--job-language" : "python",
+    "--TempDir" : "s3://aws-glue-assets-109286116364-eu-north-1/temporary/"
+  },
+  "maxRetries" : 0,
+  "allocatedCapacity" : 2,
+  "timeout" : 480,
+  "maxCapacity" : 2.0,
+  "glueVersion" : "5.0",
+  "numberOfWorkers" : 2,
+  "workerType" : "G.1X",
+  "sourceControlDetails" : {
+    "provider" : "GITHUB",
+    "repository" : "First_Repo",
+    "branch" : "master",
+    "folder" : "Glue"
+  }
+}
